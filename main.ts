@@ -3,17 +3,8 @@ import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Set
 const fs = require("fs");
 const path = require('path');
 
-// Remember to rename these classes and interfaces!
-
-interface MyPluginSettings { mySetting: string; }
-const DEFAULT_SETTINGS: MyPluginSettings = { mySetting: 'default' }
-
 export default class MyPlugin extends Plugin {
-	settings: MyPluginSettings;
-
 	async onload() {
-		await this.loadSettings();
-
 		this.registerMarkdownCodeBlockProcessor("textfile", async (src, el, ctx) => {
 			// Parse settings and get user specified variables. 
 			const jsonSettings = JSON.parse(src);
@@ -39,12 +30,6 @@ export default class MyPlugin extends Plugin {
 			const code = pre.createEl("code")
 			code.addClass(`language-${language}`);
 			code.setText(content);
-
-			console.log(`filepath: ${resolvedPath}, language: ${language}, content: ${content}`);
 		})
 	}
-
-	onunload() { }
-	async loadSettings() { this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData()); }
-	async saveSettings() { await this.saveData(this.settings); }
 }
