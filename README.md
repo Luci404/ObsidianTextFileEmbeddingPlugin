@@ -6,6 +6,6 @@ Source:
 
 ![](/images/example01.png)
 
-Preview:
+Generated:
 
 ![](/images/example02.png)
