@@ -3,7 +3,7 @@ import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Set
 const fs = require("fs");
 const path = require('path');
 
-export default class MyPlugin extends Plugin {
+export default class TextFileEmbeddingPlugin extends Plugin {
 	async onload() {
 		this.registerMarkdownCodeBlockProcessor("textfile", async (src, el, ctx) => {
 			// Parse settings and get user specified variables. 
