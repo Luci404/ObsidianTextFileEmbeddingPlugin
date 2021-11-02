@@ -3,6 +3,11 @@ import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Set
 const fs = require("fs");
 const path = require('path');
 
+/*
+TODO: Rerender on file change.
+To rerender preview: this.app.workspace.activeLeaf.view.previewMode.rerender()
+*/ 
+
 export default class TextFileEmbeddingPlugin extends Plugin {
 	async onload() {
 		this.registerMarkdownCodeBlockProcessor("textfile", async (src, el, ctx) => {
