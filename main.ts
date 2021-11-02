@@ -31,6 +31,9 @@ export default class MyPlugin extends Plugin {
 			// If the user has specified a language, use the specified language else use the file extension.
 			var language = userSpecifiedLanguage != undefined ? userSpecifiedLanguage : path.extname(resolvedPath).substring(1);
 			
+			// Create header.
+			el.createEl("b").setText(`${path.basename(userSpecifiedFilepath)}`);
+			
 			// Create the code block (refer to prism.js docs).
 			const pre = el.createEl("pre");
 			const code = pre.createEl("code")
